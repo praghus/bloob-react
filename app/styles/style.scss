@@ -1,0 +1,72 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  font-family: "Clear Sans", sans-serif;
+  font-size: 21px;
+}
+
+.text {
+  order: 2;
+  padding-top: 40px;
+  width: 880px;
+  font-weight: bold;
+}
+
+.board {
+  order: 1;
+  width: 880px;
+  height: 660px;
+  padding: 5px;
+  background-color: #000;
+  border-radius: 7px;
+  outline: none;
+  position: relative;
+}
+
+.board .cell, .tile {
+  user-select: none;
+  cursor: default;
+}
+
+.cell, .tile {
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+  line-height: 90px;
+  display: inline-block;
+  font-size: 55px;
+  font-weight: bold;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 7px;
+  font-family: "Clear Sans";
+  color: #766;
+  background-color: #dcb;
+}
+
+.tile { position:absolute; background-image: url(/app/assets/sprites.png); font-size:0;}
+.tile0 { display: none;}
+.tile1 { background-position: -500px;}
+.tile2 { background-position: -400px;}
+.tile3 { background-position: -300px;}
+.tile4 { background-position: -200px;}
+.tile5 { background-position: -100px;}
+.tile6 { background-position: 0px;}
+.tile7 { background-position: -448px;}
+.tile8 { background-position: -512px;}
+.tile9 { background-position: -576px;}
+.tile10	{ background-position: -640px;}
+.tile11	{ background-position: -384px;}
+
+
+@for $row from 0 through 7 {
+  @for $column from 0 through 7 {
+    .position_#{$row}_#{$column} {
+      top: 110 * $row + 5 + px;
+      left: 110 * $column + 5+ px;
+    }
+  }
+}

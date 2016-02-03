@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 import Board from './../models/board.jsx';
 import CellElement from './cell-element.jsx';
 import TileElement from './tile-element.jsx';
+import BallElement from './ball-element.jsx';
 
 export default class BoardElement extends React.Component {
   constructor(props) {
@@ -16,15 +17,15 @@ export default class BoardElement extends React.Component {
   restartGame() {
     this.state = {board: new Board};
   }
+
   handleKeyDown (event) {
     if (this.state.board.hasWon()) {
       return;
     }
     if (event.keyCode >= 37 && event.keyCode <= 40) {
       event.preventDefault();
-      console.log('click');
-      //var direction = event.keyCode - 37;
-      //this.setState({board: this.state.board.move(direction)});
+      let direction = event.keyCode - 37;
+      this.setState({board: this.state.board.move(direction)});
     }
   }
 
@@ -45,12 +46,13 @@ export default class BoardElement extends React.Component {
     var tiles = this.state.board.tiles.filter(function (tile) {
       return tile.value != 0;
     }).map(function (tile) {
-      return <TileElement key={tile.id} tile={tile}/>;
+      return <TileElement key={tile.id} tile={tile} />;
     });
     return (
-      <div className='board' tabIndex="1">
+      <div className='board' tabIndex='1'>
         {cells}
         {tiles}
+        <BallElement key='ball' ball={this.state.board.ball} />
       </div>
     );
   }

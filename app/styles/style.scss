@@ -37,6 +37,14 @@ body {
   cursor: default;
 }
 
+.ball {
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 100px 100px, #5cabff, #000);
+}
+
 .cell, .tile {
   width: 100px;
   height: 100px;
@@ -52,6 +60,7 @@ body {
   color: #766;
   background-color: #dcb;
 }
+
 
 .tile { position:absolute;
   //background-image: url(/app/assets/sprites.png); font-size:0;

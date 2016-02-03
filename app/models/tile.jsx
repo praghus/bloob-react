@@ -7,10 +7,11 @@ export default class Tile {
     this.y = y;
     this.value = v;
   }
+
   hit(){
     if (this.value > 0 && this.value < 6){
       this.value--;
     }
-    return this.value;
+    return this;
   }
 }

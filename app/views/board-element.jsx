@@ -13,8 +13,6 @@ export default class BoardElement extends React.Component {
     this.state = {
       board: new Board
     };
-    //this.restartGame = this.restartGame.bind(this);
-    //this.tick = this.tick.bind(this);
   }
 
   restartGame() {
@@ -29,35 +27,34 @@ export default class BoardElement extends React.Component {
       event.preventDefault();
       const {board} = this.state;
       const direction = event.keyCode - 37;
-      if (!board.ball.moving) {
-        switch (direction) {
-          case 0:
-            board.ball.moveTo(board.ball.x - 1, board.ball.y);
-            break;
-          case 1:
-            board.ball.moveTo(board.ball.x, board.ball.y - 1);
-            break;
-          case 2:
-            board.ball.moveTo(board.ball.x + 1, board.ball.y);
-            break;
-          case 3:
-            board.ball.moveTo(board.ball.x, board.ball.y + 1);
-            break;
-        }
-        this.setState({board: board});
+      switch (direction) {
+        case 0:
+          board.ball.moveTo(board.ball.x - 1, board.ball.y);
+          break;
+        case 1:
+          board.ball.moveTo(board.ball.x, board.ball.y - 1);
+          break;
+        case 2:
+          board.ball.moveTo(board.ball.x + 1, board.ball.y);
+          break;
+        case 3:
+          board.ball.moveTo(board.ball.x, board.ball.y + 1);
+          break;
       }
+      this.setState({board: board});
+
     }
   }
 
   tick (){
     const {board} = this.state;
-    console.log('tick', board.ball.z);
-    if(board.ball.moving) {
-      board.ball.moving = false;
-    } else {
+    if(board.ball.isMoving()) {
       board.ball.moved();
-      const t = board.getTile(board.ball.x, board.ball.y);
-      console.log(t.hit());
+    }
+
+    if(board.ball.z === -1){
+       const t = board.getTile(board.ball.x, board.ball.y);
+       t.hit();
     }
     board.ball.z = board.ball.z === 1 ? -1 : 1;
     this.setState({board: board});

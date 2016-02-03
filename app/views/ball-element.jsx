@@ -10,14 +10,14 @@ export default class BallElement extends React.Component {
 
   render() {
     const {ball} = this.props;
-    let ballClass = 'ball position_' + ball.y + '_' + ball.x;
+    let ballClass = 'ball position_' + ball.newY + '_' + ball.newX;
 
-    if (ball.hasMoved()) {
-      ballClass +=' y_from_' + ball.fromY() + '_to_' + ball.toY();
-      ballClass +=' x_from_' + ball.fromX() + '_to_' + ball.toX();
-      //classArray.push('isMoving');
+    if (ball.z === 1) {
+      ballClass += ' up';
+      //ballClass +=' y_from_' + ball.fromY() + '_to_' + ball.toY();
+      //ballClass +=' x_from_' + ball.fromX() + '_to_' + ball.toX();
     } else {
-      ballClass += ' jumping';
+      ballClass += ' down';
     }
 
     return (

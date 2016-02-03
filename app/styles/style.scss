@@ -44,22 +44,14 @@ body {
   top: 0;
   border-radius: 50%;
   background: radial-gradient(circle at 20px 20px, #5cabff, #000);
-  //-webkit-animation: zoom 1s;
-}
-.jumping {
-  animation: zoom 1s infinite;
-}
+  transition: all 0.5s ease-in-out;
 
-@keyframes zoom {
-  0% {
-    transform: scale(1,1);
-  }
-  50% {
-    transform: scale(2,2);
-  }
-  100% {
-    transform: scale(1,1);
-  }
+}
+.down {
+  transform: scale(0.8,0.8);
+}
+.up {
+  transform: scale(1.5,1.5);
 }
 
 
@@ -120,13 +112,13 @@ body {
       @keyframes #{$name} {
         0% {
           top: 110 * $fromRow + 5 + px;
-          transform: scale(1,1);
-        }
-        50% {
           transform: scale(2,2);
         }
-        100% {
+        50% {
           transform: scale(1,1);
+        }
+        100% {
+          transform: scale(2,2);
           top: 110 * $toRow + 5 + px;
         }
       }
@@ -152,13 +144,13 @@ body {
       @keyframes #{$name} {
         0% {
           left: 110 * $fromColumn + 5 + px;
-          transform: scale(1,1);
-        }
-        50% {
           transform: scale(2,2);
         }
-        100% {
+        50% {
           transform: scale(1,1);
+        }
+        100% {
+          transform: scale(2,2);
           left: 110 * $toColumn + 5 + px;
         }
       }

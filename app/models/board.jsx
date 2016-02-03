@@ -6,7 +6,7 @@ import Levels from './levels.jsx';
 
 export default class Board {
   constructor() {
-    this.level = 5;
+    this.level = 0;
     this.tiles = [];
     this.cells = [];
     this.ball = {};

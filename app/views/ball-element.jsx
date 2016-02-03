@@ -11,15 +11,7 @@ export default class BallElement extends React.Component {
   render() {
     const {ball} = this.props;
     let ballClass = 'ball position_' + ball.newY + '_' + ball.newX;
-
-    if (ball.z === 1) {
-      ballClass += ' up';
-      //ballClass +=' y_from_' + ball.fromY() + '_to_' + ball.toY();
-      //ballClass +=' x_from_' + ball.fromX() + '_to_' + ball.toX();
-    } else {
-      ballClass += ' down';
-    }
-
+    ballClass += ball.z === 1 ? ' up' : ' down';
     return (
       <span className={ballClass}>{''}</span>
     );

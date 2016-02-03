@@ -41,7 +41,7 @@ export default class BoardElement extends React.Component {
           board.ball.moveTo(board.ball.x, board.ball.y + 1);
           break;
       }
-      this.setState({board: board});
+//      this.setState({board: board});
 
     }
   }

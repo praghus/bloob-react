@@ -25,7 +25,6 @@ body {
   height: 660px;
   padding: 5px;
   background-color: #222;
-  //border-radius: 7px;
   outline: none;
   position: relative;
 }
@@ -45,13 +44,14 @@ body {
   border-radius: 50%;
   background: radial-gradient(circle at 20px 20px, #5cabff, #000);
   transition: all 0.5s ease-in-out;
-
 }
+
 .down {
   transform: scale(0.8,0.8);
 }
+
 .up {
-  transform: scale(1.5,1.5);
+  transform: scale(1.8,1.8);
 }
 
 
@@ -65,7 +65,7 @@ body {
   font-weight: bold;
   text-align: center;
   vertical-align: middle;
-  //border-radius: 7px;
+  border-radius: 7px;
   font-family: "Clear Sans", sans-serif;
   color: #766;
   background-color: #000;

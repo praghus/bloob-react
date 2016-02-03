@@ -38,10 +38,10 @@ export default class Board {
   move (direction) {
     console.log(direction);
     switch (direction){
-      case 0: this.ball.x-=1; break;
-      case 1: this.ball.y-=1; break;
-      case 2: this.ball.x+=1; break;
-      case 3: this.ball.y+=1; break;
+      case 0: this.ball.moveTo(this.ball.x-1, this.ball.y); break;
+      case 1: this.ball.moveTo(this.ball.x, this.ball.y-1); break;
+      case 2: this.ball.moveTo(this.ball.x+1, this.ball.y); break;
+      case 3: this.ball.moveTo(this.ball.x, this.ball.y+1); break;
     }
     let t = this.getTile(this.ball.x, this.ball.y);
     console.log(t.hit());

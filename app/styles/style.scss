@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "Clear Sans";
+  src: url('/app/assets/clear-sans.ttf') format('truetype');
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -24,6 +29,7 @@ body {
   border-radius: 7px;
   outline: none;
   position: relative;
+  opacity: 0.1;
 }
 
 .board .cell, .tile {
@@ -47,7 +53,9 @@ body {
   background-color: #dcb;
 }
 
-.tile { position:absolute; background-image: url(/app/assets/sprites.png); font-size:0;}
+.tile { position:absolute;
+  //background-image: url(/app/assets/sprites.png); font-size:0;
+}
 .tile0 { display: none;}
 .tile1 { background-position: -500px;}
 .tile2 { background-position: -400px;}
@@ -55,11 +63,11 @@ body {
 .tile4 { background-position: -200px;}
 .tile5 { background-position: -100px;}
 .tile6 { background-position: 0px;}
-.tile7 { background-position: -448px;}
-.tile8 { background-position: -512px;}
-.tile9 { background-position: -576px;}
-.tile10	{ background-position: -640px;}
-.tile11	{ background-position: -384px;}
+.tile7 { background-position: -700px;}
+.tile8 { background-position: -800px;}
+.tile9 { background-position: -900px;}
+.tile10	{ background-position: -100px;}
+.tile11	{ background-position: -600px;}
 
 
 @for $row from 0 through 7 {

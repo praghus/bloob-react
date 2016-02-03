@@ -1,7 +1,9 @@
+'use strict';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-import BoardElement from './board-element.jsx';
+import BoardElement from './views/board-element.jsx';
 
-var css = require("./styles/style.scss");
+require("./styles/style.scss");
 
 ReactDOM.render(<BoardElement />, document.getElementById('boardDiv'));

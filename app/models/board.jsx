@@ -1,19 +1,22 @@
+'use strict';
+
 import Tile from './tile.jsx';
 import Levels from './levels.jsx';
 
-class Board  {
-  constructor () {
+export default class Board {
+  constructor() {
     this.cols = 0;
     this.rows = 0;
     this.tiles = [];
     this.cells = [];
     this.level = 0;
     this.won = false;
-    this.levels = new Levels;
+    this.levels = Levels;
     this.loadLevelData();
   }
-  loadLevelData () {
-    let map = this.levels.data[this.level].map;
+
+  loadLevelData() {
+    let map = this.levels[this.level].map;
     this.rows = map.length;
     for (let [y, row] of map.entries()) {
       this.cells.push([]);
@@ -23,14 +26,24 @@ class Board  {
       }
     }
   }
-  addTile (x, y, col) {
-    var res = new Tile;
+
+  getTile(x,y){
+    return this.cells[y][x];
+  }
+
+  hasWon (){
+    return false;
+  }
+
+  addTile(x, y, col) {
+    var res = new Tile(x, y, col);
     Tile.apply(res, arguments);
     this.tiles.push(res);
     return res;
   }
-  nextLevel () {
+
+  nextLevel() {
     this.level++;
+    this.loadLevelData();
   }
 }
-export default Board;

@@ -59,7 +59,7 @@ body {
   text-align: center;
   vertical-align: middle;
   border-radius: 7px;
-  font-family: "Clear Sans";
+  font-family: "Clear Sans", sans-serif;
   color: #766;
   background-color: #dcb;
 }
@@ -74,7 +74,7 @@ body {
 .tile3 { background-position: -300px;}
 .tile4 { background-position: -200px;}
 .tile5 { background-position: -100px;}
-.tile6 { background-position: 0px;}
+.tile6 { background-position: 0}
 .tile7 { background-position: -700px;}
 .tile8 { background-position: -800px;}
 .tile9 { background-position: -900px;}
@@ -82,7 +82,7 @@ body {
 .tile11	{ background-position: -600px;}
 
 
-@for $row from 0 through 7 {
+@for $row from 0 through 5 {
   @for $column from 0 through 7 {
     .position_#{$row}_#{$column} {
       top: 110 * $row + 5 + px;
@@ -91,13 +91,13 @@ body {
   }
 }
 
-@for $fromRow from 0 through 7 {
-  @for $toRow from 0 through 7 {
+@for $fromRow from 0 through 5 {
+  @for $toRow from 0 through 5 {
     $name: y_from_#{$fromRow}_to_#{$toRow};
 
     @if $fromRow == $toRow {
       .#{$name} {
-        top: 110 * $toRow + 5;
+        top: 110 * $toRow + 5 + px;
       }
     } @else {
       .#{$name} {
@@ -124,7 +124,7 @@ body {
 
     @if $fromColumn == $toColumn {
       .#{$name} {
-        left: 110 * $toColumn + 5;
+        left: 110 * $toColumn + 5 + px;
       }
     } @else {
       .#{$name} {

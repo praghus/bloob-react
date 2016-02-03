@@ -12,7 +12,22 @@ body {
   font-family: "Clear Sans", sans-serif;
   font-size: 21px;
 }
-
+.perspective {
+  background-color: hsla(0,0%,0%,.1);
+  background-image: -webkit-linear-gradient(hsla(0,0%,0%,.1) 2.5%, transparent 2.5%, transparent 97.5%, hsla(0,0%,0%,.1) 97.5%),
+  -webkit-linear-gradient(left, hsla(0,0%,0%,.1) 2.5%, transparent 2.5%, transparent 97.5%, hsla(0,0%,0%,.1) 97.5%);
+  background-size: 110px 110px;
+  box-shadow: 0 0 0 .1em hsla(0,0%,0%,.2);
+  height: 680px;
+  left: 50%;
+  margin-left: -300px;
+  padding: 100px;
+  position: absolute;
+  top: 50%;
+  width: 900px;
+  transform: rotateX(45deg) rotateZ(45deg);
+  transform-style: preserve-3d;
+}
 .text {
   order: 2;
   padding-top: 40px;

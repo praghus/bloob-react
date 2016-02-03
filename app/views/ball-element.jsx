@@ -9,7 +9,7 @@ export default class BallElement extends React.Component {
   }
 
   render() {
-    let ball = this.props.ball;
+    const {ball} = this.props;
     let ballClass = 'ball position_' + ball.y + '_' + ball.x;
 
     if (ball.hasMoved()) {

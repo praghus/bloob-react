@@ -2,16 +2,19 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ReactInterval from 'react-interval';
 import Board from './../models/board.jsx';
-import CellElement from './cell-element.jsx';
 import TileElement from './tile-element.jsx';
 import BallElement from './ball-element.jsx';
 
 export default class BoardElement extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {board: new Board};
-    this.restartGame = this.restartGame.bind(this);
+    this.state = {
+      board: new Board
+    };
+    //this.restartGame = this.restartGame.bind(this);
+    //this.tick = this.tick.bind(this);
   }
 
   restartGame() {
@@ -24,33 +27,40 @@ export default class BoardElement extends React.Component {
     }
     if (event.keyCode >= 37 && event.keyCode <= 40) {
       event.preventDefault();
-      let direction = event.keyCode - 37;
-      let b = this.state.board;
-      if (!b.ball.moving) {
+      const {board} = this.state;
+      const direction = event.keyCode - 37;
+      if (!board.ball.moving) {
         switch (direction) {
           case 0:
-            b.ball.moveTo(b.ball.x - 1, b.ball.y);
+            board.ball.moveTo(board.ball.x - 1, board.ball.y);
             break;
           case 1:
-            b.ball.moveTo(b.ball.x, b.ball.y - 1);
+            board.ball.moveTo(board.ball.x, board.ball.y - 1);
             break;
           case 2:
-            b.ball.moveTo(b.ball.x + 1, b.ball.y);
+            board.ball.moveTo(board.ball.x + 1, board.ball.y);
             break;
           case 3:
-            b.ball.moveTo(b.ball.x, b.ball.y + 1);
+            board.ball.moveTo(board.ball.x, board.ball.y + 1);
             break;
         }
-        this.setState({board: b});
-        this.timer = setTimeout(function () {
-          this.timer = null;
-          this.state.board.ball.moved();
-          let t = this.state.board.getTile(this.state.board.ball.x, this.state.board.ball.y);
-          console.log(t.hit());
-          this.setState({board: this.state.board});
-        }.bind(this), 1000);
+        this.setState({board: board});
       }
     }
+  }
+
+  tick (){
+    const {board} = this.state;
+    console.log('tick', board.ball.z);
+    if(board.ball.moving) {
+      board.ball.moving = false;
+    } else {
+      board.ball.moved();
+      const t = board.getTile(board.ball.x, board.ball.y);
+      console.log(t.hit());
+    }
+    board.ball.z = board.ball.z === 1 ? -1 : 1;
+    this.setState({board: board});
   }
 
   componentDidMount () {
@@ -62,21 +72,17 @@ export default class BoardElement extends React.Component {
   }
 
   render() {
-    var cells = this.state.board.cells.map(function (row, i) {
-      return <div key={i}>{row.map(function (col, j) {
-        return <CellElement key={j}/>;
-      })}</div>;
-    });
-    var tiles = this.state.board.tiles.filter(function (tile) {
+    const {board} = this.state;
+    var tiles = board.tiles.filter(function (tile) {
       return tile.value != 0;
     }).map(function (tile) {
       return <TileElement key={tile.id} tile={tile} />;
     });
     return (
       <div className='board' tabIndex='1'>
-        {cells}
         {tiles}
-        <BallElement key='ball' ball={this.state.board.ball} />
+        <BallElement key='ball' ball={board.ball} />
+        <ReactInterval timeout={500} enabled={true} callback={() => this.tick()} />
       </div>
     );
   }

@@ -10,7 +10,7 @@ export default class Ball {
     this.newX = x;
     this.newY = y;
     this.moving = false;
-    this.z = 0;
+    this.z = 1;
   }
 
   moveTo (x, y) {
@@ -30,10 +30,6 @@ export default class Ball {
     this.y = this.newY;
     this.moving = false;
     console.log('moved');
-  }
-
-  isMoving() {
-    return this.moving;
   }
 
   hasMoved () {

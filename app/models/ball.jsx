@@ -7,18 +7,37 @@ export default class Ball {
     this.y = y;
     this.oldX = x;
     this.oldY = y;
+    this.newX = x;
+    this.newY = y;
+    this.moving = false;
     this.z = 0;
   }
 
   moveTo (x, y) {
-    this.oldY = this.y;
-    this.oldX = this.x;
-    this.y = y;
-    this.x = x;
+    if(!this.moving) {
+      this.oldX = this.x;
+      this.oldY = this.y;
+      this.newX = x;
+      this.newY = y;
+      this.moving = true;
+    }
+  }
+
+  moved(){
+    this.oldX = this.newX;
+    this.oldY= this.newY;
+    this.x = this.newX;
+    this.y = this.newY;
+    this.moving = false;
+    console.log('moved');
+  }
+
+  isMoving() {
+    return this.moving;
   }
 
   hasMoved () {
-    return (this.fromY() != -1 && (this.fromY() != this.toY() || this.fromX() != this.toX()));
+    return (this.fromY() != this.toY() || this.fromX() != this.toX());
   }
 
   fromY () {
@@ -30,11 +49,11 @@ export default class Ball {
   };
 
   toY () {
-    return this.y;
+    return this.newY;
   };
 
   toX () {
-    return this.x;
+    return this.newX;
   };
 
 }

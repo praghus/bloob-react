@@ -25,7 +25,31 @@ export default class BoardElement extends React.Component {
     if (event.keyCode >= 37 && event.keyCode <= 40) {
       event.preventDefault();
       let direction = event.keyCode - 37;
-      this.setState({board: this.state.board.move(direction)});
+      let b = this.state.board;
+      if (!b.ball.moving) {
+        switch (direction) {
+          case 0:
+            b.ball.moveTo(b.ball.x - 1, b.ball.y);
+            break;
+          case 1:
+            b.ball.moveTo(b.ball.x, b.ball.y - 1);
+            break;
+          case 2:
+            b.ball.moveTo(b.ball.x + 1, b.ball.y);
+            break;
+          case 3:
+            b.ball.moveTo(b.ball.x, b.ball.y + 1);
+            break;
+        }
+        this.setState({board: b});
+        this.timer = setTimeout(function () {
+          this.timer = null;
+          this.state.board.ball.moved();
+          let t = this.state.board.getTile(this.state.board.ball.x, this.state.board.ball.y);
+          console.log(t.hit());
+          this.setState({board: this.state.board});
+        }.bind(this), 1000);
+      }
     }
   }
 

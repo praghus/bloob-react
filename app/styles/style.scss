@@ -45,7 +45,9 @@ body {
   border-radius: 50%;
   background: radial-gradient(circle at 20px 20px, #5cabff, #000);
   //-webkit-animation: zoom 1s;
-  //animation: zoom 1s;
+}
+.jumping {
+  animation: zoom 1s infinite;
 }
 
 @keyframes zoom {
@@ -53,7 +55,7 @@ body {
     transform: scale(1,1);
   }
   50% {
-    transform: scale(1.5,1.5);
+    transform: scale(2,2);
   }
   100% {
     transform: scale(1,1);
@@ -88,7 +90,7 @@ body {
 .tile7 { background-position: -700px;}
 .tile8 { background-position: -800px;}
 .tile9 { background-position: -900px;}
-.tile10	{ background-position: -100px;}
+.tile10	{ background-position: -1000px;}
 .tile11	{ background-position: -600px;}
 
 @for $row from 0 through 5 {

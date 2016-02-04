@@ -11,6 +11,7 @@ export default class Board {
     this.cells = [];
     this.ball = {};
     this.won = false;
+    this.tilesCount = 0;
     this.levels = Levels;
     this.loadLevelData();
   }
@@ -18,13 +19,15 @@ export default class Board {
   loadLevelData() {
     this.tiles = [];
     this.cells = [];
+    this.won = false;
+    this.tilesCount = 0;
     let p = this.levels[this.level].player;
     let map = this.levels[this.level].map;
     this.ball = new Ball(p.x, p.y);
     for (let [y, row] of map.entries()) {
       this.cells.push([]);
-      for (let [x, col] of row.entries()) {
-        this.cells[y].push(this.addTile(x, y, col));
+      for (let [x, v] of row.entries()) {
+        this.cells[y].push(this.addTile(x, y, v));
       }
     }
   }
@@ -38,10 +41,13 @@ export default class Board {
     return this.cells[y][x];
   }
 
-  addTile(x, y, col) {
-    var res = new Tile(x, y, col);
+  addTile(x, y, v) {
+    var res = new Tile(x, y, v);
     Tile.apply(res, arguments);
     this.tiles.push(res);
+    if (v !== 6) {
+      this.tilesCount ++;
+    }
     return res;
   }
 

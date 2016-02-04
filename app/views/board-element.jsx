@@ -52,7 +52,13 @@ export default class BoardElement extends React.Component {
           case 9:  board.ball.moveTo(board.ball.x, board.ball.y + 2); break;
           case 10: board.ball.moveTo(board.ball.x + 2, board.ball.y); break;
         }
-        t.hit();
+        if(t.hit().value === 0){
+          board.tilesCount --;
+        }
+        if (board.tilesCount === 0){
+          board.won = true;
+          board.nextLevel();
+        }
       } else {
         this.restartGame();
       }

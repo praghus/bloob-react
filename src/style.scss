@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Clear Sans";
-  src: url('/app/assets/clear-sans.ttf') format('truetype');
+  src: url('../assets/clear-sans.ttf') format('truetype');
 }
 
 body {
@@ -71,7 +71,7 @@ body {
   background-color: #000;
 }
 
-.tile  { position:absolute; background-image: url(/app/assets/sprites.png); font-size:0;  }
+.tile  { position:absolute; background-image: url('/assets/sprites.png'); font-size:0;  }
 .tile0 { display: none;}
 .tile1 { background-position: -500px;}
 .tile2 { background-position: -400px;}

@@ -12,7 +12,7 @@ export default class Ball {
   }
 
   moveTo (x, y) {
-    if(!this.moving) {
+    if(!this.moving && x >= 0 && y >= 0 && x < 8 && y < 6) {
       this.newX = x;
       this.newY = y;
       this.moving = true;
@@ -29,25 +29,4 @@ export default class Ball {
   isMoving() {
     return this.moving && this.z === 1;
   }
-
-  hasMoved () {
-    return (this.fromY() != this.toY() || this.fromX() != this.toX());
-  }
-
-  fromY () {
-    return this.y;
-  };
-
-  fromX () {
-    return this.x;
-  };
-
-  toY () {
-    return this.newY;
-  };
-
-  toX () {
-    return this.newX;
-  };
-
 }

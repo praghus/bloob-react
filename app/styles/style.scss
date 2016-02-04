@@ -24,6 +24,7 @@ body {
   width: 880px;
   height: 660px;
   padding: 5px;
+  border-radius: 7px;
   background-color: #222;
   outline: none;
   position: relative;
@@ -53,7 +54,6 @@ body {
 .up {
   transform: scale(1.8,1.8);
 }
-
 
 .cell, .tile {
   width: 100px;
@@ -94,87 +94,19 @@ body {
   }
 }
 
-@for $fromRow from 0 through 5 {
-  @for $toRow from 0 through 5 {
-    $name: y_from_#{$fromRow}_to_#{$toRow};
-
-    @if $fromRow == $toRow {
-      .#{$name} {
-        top: 110 * $toRow + 5 + px;
-      }
-    } @else {
-      .#{$name} {
-        animation-duration: 1s;
-        animation-name: #{$name};
-        animation-fill-mode: forwards;
-      }
-
-      @keyframes #{$name} {
-        0% {
-          top: 110 * $fromRow + 5 + px;
-          transform: scale(2,2);
-        }
-        50% {
-          transform: scale(1,1);
-        }
-        100% {
-          transform: scale(2,2);
-          top: 110 * $toRow + 5 + px;
-        }
-      }
-    }
-  }
-}
-
-@for $fromColumn from 0 through 7 {
-  @for $toColumn from 0 through 7 {
-    $name: x_from_#{$fromColumn}_to_#{$toColumn};
-
-    @if $fromColumn == $toColumn {
-      .#{$name} {
-        left: 110 * $toColumn + 5 + px;
-      }
-    } @else {
-      .#{$name} {
-        animation-duration: 1s;
-        animation-name: #{$name};
-        animation-fill-mode: forwards;
-      }
-
-      @keyframes #{$name} {
-        0% {
-          left: 110 * $fromColumn + 5 + px;
-          transform: scale(2,2);
-        }
-        50% {
-          transform: scale(1,1);
-        }
-        100% {
-          transform: scale(2,2);
-          left: 110 * $toColumn + 5 + px;
-        }
-      }
-    }
-  }
-}
-
-
-
 // Isometric playground
-/*
+/** /
 .perspective {
-
   background-color: hsla(0,0%,0%,.1);
   background-image: -webkit-linear-gradient(hsla(0,0%,0%,.1) 2.5%, transparent 2.5%, transparent 97.5%, hsla(0,0%,0%,.1) 97.5%),
   -webkit-linear-gradient(left, hsla(0,0%,0%,.1) 2.5%, transparent 2.5%, transparent 97.5%, hsla(0,0%,0%,.1) 97.5%);
   background-size: 110px 110px;
   box-shadow: 0 0 0 .1em hsla(0,0%,0%,.2);
   height: 680px;
-  left: 50%;
-  margin-left: -300px;
+  left: 0;
   padding: 100px;
   position: absolute;
-  top: 50%;
+  top: 0;
   width: 900px;
   transform: rotateX(45deg) rotateZ(45deg);
   transform-style: preserve-3d;
@@ -197,14 +129,14 @@ body {
     transition: .25s;
   }
   .tile:after {
-    background-color: #e55;
-    transform: rotateX(-90deg) translateX(-65px) translateY(100px);
+    background-color: #888;
+    transform: rotateX(-90deg) translateX(-50px) translateY(100px);
     transform-origin: 100% 100%;
   }
   .tile:before {
-    background-color: #d44;
-    transform: rotateY(90deg) translateX(52px) translateY(34px);
+    background-color: #444;
+    transform: rotateY(90deg) translateX(30px) translateY(50px);
     transform-origin: 100% 0;
   }
 }
-*/
+/**/

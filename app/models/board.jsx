@@ -16,6 +16,8 @@ export default class Board {
   }
 
   loadLevelData() {
+    this.tiles = [];
+    this.cells = [];
     let p = this.levels[this.level].player;
     let map = this.levels[this.level].map;
     this.ball = new Ball(p.x, p.y);
@@ -27,12 +29,13 @@ export default class Board {
     }
   }
 
-  getTile(x,y){
-    return this.cells[y][x];
+  restart (){
+    this.loadLevelData();
+    return this;
   }
 
-  hasWon (){
-    return false;
+  getTile(x,y){
+    return this.cells[y][x];
   }
 
   addTile(x, y, col) {

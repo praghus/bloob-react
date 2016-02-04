@@ -11,6 +11,8 @@ export default class Tile {
   hit(){
     if (this.value > 0 && this.value < 6){
       this.value--;
+    } else if (this.value > 6){
+      this.value = 0;
     }
     return this;
   }

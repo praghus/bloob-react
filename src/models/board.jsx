@@ -6,10 +6,7 @@ import Levels from './levels.jsx';
 
 export default class Board {
   constructor() {
-    this.level = 0;
-    this.tiles = [];
-    this.cells = [];
-    this.ball = {};
+    this.level = 2;
     this.won = false;
     this.tilesCount = 0;
     this.levels = Levels;
@@ -21,9 +18,8 @@ export default class Board {
     this.cells = [];
     this.won = false;
     this.tilesCount = 0;
-    let p = this.levels[this.level].player;
-    let map = this.levels[this.level].map;
-    this.ball = new Ball(p.x, p.y);
+    const {player, map} = this.levels[this.level];
+    this.ball = new Ball(player.x, player.y);
     for (let [y, row] of map.entries()) {
       this.cells.push([]);
       for (let [x, v] of row.entries()) {
@@ -42,7 +38,7 @@ export default class Board {
   }
 
   addTile(x, y, v) {
-    var res = new Tile(x, y, v);
+    const res = new Tile(x, y, v);
     Tile.apply(res, arguments);
     this.tiles.push(res);
     if (v !== 6) {

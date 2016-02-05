@@ -8,6 +8,7 @@ export default class Ball {
     this.newX = x;
     this.newY = y;
     this.moving = false;
+    this.steps = 1;
     this.z = 1;
   }
 
@@ -23,6 +24,7 @@ export default class Ball {
     this.x = this.newX;
     this.y = this.newY;
     this.moving = false;
+    this.steps = 1;
     console.log('moved');
   }
 

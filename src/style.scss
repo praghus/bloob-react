@@ -15,14 +15,14 @@ body {
 .text {
   order: 2;
   padding-top: 40px;
-  width: 880px;
+  width: 810px;
   font-weight: bold;
 }
 
 .board {
   order: 1;
-  width: 880px;
-  height: 660px;
+  width: 810px;
+  height: 610px;
   padding: 5px;
   border-radius: 7px;
   background-color: #222;
@@ -65,7 +65,7 @@ body {
   font-weight: bold;
   text-align: center;
   vertical-align: middle;
-  border-radius: 7px;
+  border-radius: 0px;
   font-family: "Clear Sans", sans-serif;
   color: #fff;
   background-color: #000;
@@ -92,8 +92,8 @@ body {
 @for $row from 0 through 5 {
   @for $column from 0 through 7 {
     .position_#{$row}_#{$column} {
-      top: 110 * $row + 5 + px;
-      left: 110 * $column + 5+ px;
+      top: 100 * $row + 5 + px;
+      left: 100 * $column + 5+ px;
     }
   }
 }

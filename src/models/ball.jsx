@@ -16,6 +16,7 @@ export default class Ball {
     if(!this.moving && x >= 0 && y >= 0 && x < 8 && y < 6) {
       this.newX = x;
       this.newY = y;
+      this.steps = 1;
       this.moving = true;
     }
   }
@@ -24,7 +25,6 @@ export default class Ball {
     this.x = this.newX;
     this.y = this.newY;
     this.moving = false;
-    this.steps = 1;
     console.log('moved');
   }
 

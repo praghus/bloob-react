@@ -51,6 +51,10 @@ export default class BoardElement extends React.Component {
           case 9:  ball.moveTo(ball.x, ball.y + 2); break;
           case 10: ball.moveTo(ball.x + 2, ball.y); break;
           case 11: ball.steps = 2; break;
+          case 12: ball.moveTo(ball.x + 1, ball.y -1); break;
+          case 13: ball.moveTo(ball.x + 1, ball.y +1); break;
+          case 14: ball.moveTo(ball.x - 1, ball.y +1); break;
+          case 15: ball.moveTo(ball.x - 1, ball.y -1); break;
         }
         if(t.hit().value === 0){
           board.tilesCount --;

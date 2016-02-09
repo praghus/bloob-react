@@ -6,7 +6,7 @@ import Levels from './levels.jsx';
 
 export default class Board {
   constructor() {
-    this.level = 2;
+    this.level = 5;
     this.won = false;
     this.tilesCount = 0;
     this.levels = Levels;
@@ -41,7 +41,7 @@ export default class Board {
     const res = new Tile(x, y, v);
     Tile.apply(res, arguments);
     this.tiles.push(res);
-    if (v !== 6) {
+    if (v > 0 &&  v !== 6) {
       this.tilesCount ++;
     }
     return res;

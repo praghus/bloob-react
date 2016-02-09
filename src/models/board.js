@@ -1,8 +1,6 @@
-'use strict';
-
-import Tile from './tile.jsx';
-import Ball from './ball.jsx';
-import Levels from './levels.jsx';
+import Tile from './Tile';
+import Ball from './Ball';
+import Levels from '../assets/levels.json';
 
 export default class Board {
   constructor() {
@@ -10,6 +8,7 @@ export default class Board {
     this.won = false;
     this.tilesCount = 0;
     this.levels = Levels;
+    console.log(this.levels);
     this.loadLevelData();
   }
 
@@ -18,6 +17,8 @@ export default class Board {
     this.cells = [];
     this.won = false;
     this.tilesCount = 0;
+
+
     const {player, map} = this.levels[this.level];
     this.ball = new Ball(player.x, player.y);
     for (let [y, row] of map.entries()) {

@@ -1,5 +1,3 @@
-'use strict';
-
 export default class Ball {
   constructor(x, y) {
     this.id = 'ball';

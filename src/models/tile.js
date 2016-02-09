@@ -1,5 +1,3 @@
-'use strict';
-
 export default class Tile {
   constructor(x, y, v) {
     this.id = 't_' + y + '_' + x;

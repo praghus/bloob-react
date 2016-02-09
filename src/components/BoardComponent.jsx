@@ -3,11 +3,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactInterval from 'react-interval';
-import Board from './../models/board.jsx';
-import TileElement from './tile-element.jsx';
-import BallElement from './ball-element.jsx';
+import Board from './../models/Board';
+import TileComponent from './TileComponent';
+import BallComponent from './BallComponent';
 
-export default class BoardElement extends React.Component {
+export default class BoardComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {board: new Board};
@@ -84,12 +84,12 @@ export default class BoardElement extends React.Component {
     const tiles = board.tiles.filter(function (tile) {
       return tile.value != 0;
     }).map(function (tile) {
-      return <TileElement key={tile.id} tile={tile} />;
+      return <TileComponent key={tile.id} tile={tile} />;
     });
     return (
       <div className='board' tabIndex='1'>
         {tiles}
-        <BallElement key='ball' ball={board.ball} />
+        <BallComponent key='ball' ball={board.ball} />
         <ReactInterval timeout={500} enabled={true} callback={() => this.tick()} />
       </div>
     );

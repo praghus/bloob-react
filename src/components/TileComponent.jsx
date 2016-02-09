@@ -3,7 +3,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-export default class TileElement extends React.Component {
+export default class TileComponent extends React.Component {
   constructor(props) {
     super(props);
   }

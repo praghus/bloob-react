@@ -3,7 +3,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-export default class BallElement extends React.Component {
+export default class BallComponent extends React.Component {
   constructor(props) {
     super(props);
   }

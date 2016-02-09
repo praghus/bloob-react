@@ -8,9 +8,12 @@ module.exports = {
     './src/main.jsx'
   ],
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'dist/static/'),
     filename: 'bundle.js',
     publicPath: '/static/'
+  },
+  resolve: {
+    extensions: ['', '.js', '.jsx', '.json']
   },
   plugins: [
     new ExtractTextPlugin('style.css', {
@@ -29,17 +32,21 @@ module.exports = {
     })
   ],
   module: {
-    loaders: [      {
-      test: /.jsx?$/,
-      loader: 'babel-loader',
-      exclude: /node_modules/,
-      query: {
-        presets: ['es2015', 'react']
-      }
-    },
+    loaders: [
+      {
+        test: /.jsx?$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+        query: {
+          presets: ['es2015', 'react']
+        }
+      },
       {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract('css!sass')
+      },
+      {
+        test: /\.json$/, loader: 'json'
       }
     ]
   }

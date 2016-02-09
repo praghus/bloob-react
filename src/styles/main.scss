@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Clear Sans";
-  src: url('../assets/clear-sans.ttf') format('truetype');
+  src: url("/assets/clear-sans.ttf") format('embedded-opentype');
 }
 
 body {
@@ -12,6 +12,7 @@ body {
   font-family: "Clear Sans", sans-serif;
   font-size: 21px;
 }
+
 .text {
   order: 2;
   padding-top: 40px;
@@ -28,6 +29,7 @@ body {
   background-color: #222;
   outline: none;
   position: relative;
+  opacity: 0.1;
 }
 
 .board .cell, .tile {
@@ -70,7 +72,7 @@ body {
   color: #fff;
 }
 
-.tile  { position:absolute; background-image: url('/assets/sprites.png'); }
+.tile  { position:absolute; background-image: url("/assets/sprites.png"); }
 .tile0 { display: none;}
 .tile1 { background-position: -500px;}
 .tile2 { background-position: -400px;}

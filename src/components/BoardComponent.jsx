@@ -107,7 +107,7 @@ export default class BoardComponent extends React.Component {
       <Hammer onPanEnd={(event) => this.handlePan(event)} tabIndex='1'>
         <div className='board'>
           {tiles}
-          <BallComponent key='ball' ball={board.ball} />
+          <BallComponent key='ball' ball={board.ball} fall={()=>board.hasLost()}/>
           <OverlayComponent board={board} onRestart={() => this.restartGame()} onLevelUp={() => this.levelUp()} />
           <ReactInterval timeout={500} enabled={true} callback={() => this.tick()} />
         </div>

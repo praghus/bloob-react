@@ -9,9 +9,14 @@ export default class BallComponent extends React.Component {
   }
 
   render() {
-    const { ball } = this.props;
+    const { fall, ball } = this.props;
     let ballClass = 'ball position_' + ball.newY + '_' + ball.newX;
-    ballClass += ball.z === 1 ? ' up' : ' down';
+    if(fall()){
+      ballClass += ' fall';
+    }
+    else {
+      ballClass += ball.z === 1 ? ' up' : ' down';
+    }
     return (
       <span className={ballClass}>{''}</span>
     );

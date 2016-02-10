@@ -47,7 +47,7 @@ body {
   background-color: rgba(221, 221, 221, 0.5);
   border-radius: 7px;
   button {
-    background-color: #876;
+    background-color: #333;
     color: #fff;
     height: 40px;
     width: 200px;
@@ -74,6 +74,10 @@ body {
   border-radius: 50%;
   background: radial-gradient(circle at 20px 20px, #ff3333, #330000);
   transition: all 0.5s ease-in-out;
+}
+
+.fall {
+  transform: scale(0,0);
 }
 
 .down {

@@ -20,10 +20,12 @@ export default class Ball {
   }
 
   moved(){
-    this.x = this.newX;
-    this.y = this.newY;
-    this.moving = false;
-    console.log('moved');
+    if(this.isMoving()) {
+      this.x = this.newX;
+      this.y = this.newY;
+      this.moving = false;
+      console.log('moved');
+    }
   }
 
   isMoving() {

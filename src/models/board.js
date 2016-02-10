@@ -5,10 +5,7 @@ import Levels from '../assets/levels.json';
 export default class Board {
   constructor() {
     this.level = 5;
-    this.won = false;
-    this.tilesCount = 0;
     this.levels = Levels;
-    console.log(this.levels);
     this.loadLevelData();
   }
 
@@ -16,9 +13,8 @@ export default class Board {
     this.tiles = [];
     this.cells = [];
     this.won = false;
+    this.lost = false;
     this.tilesCount = 0;
-
-
     const {player, map} = this.levels[this.level];
     this.ball = new Ball(player.x, player.y);
     for (let [y, row] of map.entries()) {
@@ -29,9 +25,12 @@ export default class Board {
     }
   }
 
-  restart (){
-    this.loadLevelData();
-    return this;
+  hasLost(){
+    return this.lost;
+  }
+
+  hasWon(){
+    return this.won;
   }
 
   getTile(x,y){
@@ -48,8 +47,14 @@ export default class Board {
     return res;
   }
 
+  restart (){
+    this.loadLevelData();
+    return this;
+  }
+
   nextLevel() {
     this.level++;
     this.loadLevelData();
+    return this;
   }
 }

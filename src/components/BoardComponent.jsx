@@ -1,12 +1,12 @@
 'use strict';
 
 import React from 'react';
-import ReactDOM from 'react-dom';
 import ReactInterval from 'react-interval';
 import Hammer from 'react-hammerjs';
 import Board from './../models/Board';
 import TileComponent from './TileComponent';
 import BallComponent from './BallComponent';
+import OverlayComponent from './OverlayComponent';
 
 export default class BoardComponent extends React.Component {
   constructor(props) {
@@ -17,7 +17,13 @@ export default class BoardComponent extends React.Component {
 
   restartGame() {
     const { board } = this.state;
+    console.log('restart');
     this.setState({ board: board.restart() });
+  }
+
+  levelUp(){
+    const { board } = this.state;
+    this.setState({ board: board.nextLevel() });
   }
 
   handleKeyDown(event) {
@@ -73,10 +79,9 @@ export default class BoardComponent extends React.Component {
         }
         if (board.tilesCount === 0){
           board.won = true;
-          board.nextLevel();
         }
       } else {
-        this.restartGame();
+        board.lost = true;
       }
     }
     ball.z = ball.z === 1 ? -1 : 1;
@@ -99,10 +104,11 @@ export default class BoardComponent extends React.Component {
       (tile) => <TileComponent key={tile.id} tile={tile} />
     );
     return (
-      <Hammer onPanEnd={this.handlePan.bind(this)} tabIndex='1'>
+      <Hammer onPanEnd={(event) => this.handlePan(event)} tabIndex='1'>
         <div className='board'>
           {tiles}
           <BallComponent key='ball' ball={board.ball} />
+          <OverlayComponent board={board} onRestart={() => this.restartGame()} onLevelUp={() => this.levelUp()} />
           <ReactInterval timeout={500} enabled={true} callback={() => this.tick()} />
         </div>
       </Hammer>

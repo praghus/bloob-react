@@ -4,7 +4,7 @@ import Levels from '../assets/levels.json';
 
 export default class Board {
   constructor() {
-    this.level = 5;
+    this.level = 0;
     this.levels = Levels;
     this.loadLevelData();
   }

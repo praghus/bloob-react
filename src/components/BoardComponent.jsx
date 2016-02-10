@@ -11,7 +11,6 @@ import OverlayComponent from './OverlayComponent';
 export default class BoardComponent extends React.Component {
   constructor(props) {
     super(props);
-    this.dirs  = { 0: 'left', 1: 'up', 2: 'right', 3: 'down'};
     this.state = { board: new Board };
   }
 
@@ -28,22 +27,26 @@ export default class BoardComponent extends React.Component {
 
   handleKeyDown(event) {
     event.preventDefault();
+    const dirs  = { 0: 'left', 1: 'up', 2: 'right', 3: 'down'};
     if (event.keyCode >= 37 && event.keyCode <= 40) {
       const direction = event.keyCode - 37;
-      this.move(this.dirs[direction]);
+      this.move(dirs[direction]);
     }
   }
 
   handlePan(event){
     event.preventDefault();
-    if(event && event.additionalEvent){
-      this.move(event.additionalEvent);
-    }
+    const {offsetDirection} = event;
+    const dirs  = { 4: 'right', 8: 'up', 2: 'left', 16: 'down'};
+    this.move(dirs[offsetDirection]);
   }
 
   move(direction){
     const { board } = this.state;
     const { ball } = this.state.board;
+    if(board.hasLost() || ball.isMoving()){
+      return;
+    }
     console.log(direction);
     switch (direction) {
       case 'panleft'  : case 'left' : ball.moveTo(ball.x - ball.steps, ball.y); break;
@@ -104,8 +107,8 @@ export default class BoardComponent extends React.Component {
       (tile) => <TileComponent key={tile.id} tile={tile} />
     );
     return (
-      <Hammer onPanEnd={(event) => this.handlePan(event)} tabIndex='1'>
-        <div className='board'>
+      <Hammer onPanEnd={(event) => this.handlePan(event)} vertical={true}>
+        <div className='board' tabIndex='1'>
           {tiles}
           <BallComponent key='ball' ball={board.ball} fall={()=>board.hasLost()}/>
           <OverlayComponent board={board} onRestart={() => this.restartGame()} onLevelUp={() => this.levelUp()} />

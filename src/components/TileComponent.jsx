@@ -9,7 +9,7 @@ export default class TileComponent extends React.Component {
   }
 
   render() {
-    let tile = this.props.tile;
+    const { tile } = this.props;
     let tileClass = 'tile tile' + tile.value + ' position_' + tile.y + '_' + tile.x;
     return (
       <span className={tileClass}>{tile.value}</span>

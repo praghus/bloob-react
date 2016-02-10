@@ -8,4 +8,5 @@ require('./styles/main.scss');
 require('file?name=../[name].[ext]!../index.html');
 require('file?name=../assets/[name].[ext]!./assets/sprites.png');
 require('file?name=../assets/[name].[ext]!./assets/clear-sans.ttf');
+
 render(<BoardComponent />, document.getElementById('boardDiv'));

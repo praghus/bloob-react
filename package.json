@@ -57,6 +57,7 @@
     "html-webpack-plugin": "^2.8.1",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
+    "react-hammerjs": "^0.4.5",
     "react-interval": "^1.2.1"
   }
 }

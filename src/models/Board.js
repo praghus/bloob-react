@@ -25,6 +25,10 @@ export default class Board {
     }
   }
 
+  noMoves(){
+    return this.lost || this.won;
+  }
+
   hasLost(){
     return this.lost;
   }

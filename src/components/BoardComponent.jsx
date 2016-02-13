@@ -44,7 +44,7 @@ export default class BoardComponent extends React.Component {
   move(direction){
     const { board } = this.state;
     const { ball } = this.state.board;
-    if(board.hasLost() || ball.isMoving()){
+    if(board.noMoves() || ball.isMoving()){
       return;
     }
     console.log(direction);
@@ -62,6 +62,9 @@ export default class BoardComponent extends React.Component {
   tick(){
     const { board } = this.state;
     const { ball } = board;
+    if(board.noMoves()){
+      return;
+    }
     ball.moved();
     if(ball.z === -1){
       const t = board.getTile(ball.x, ball.y);
@@ -110,7 +113,7 @@ export default class BoardComponent extends React.Component {
       <Hammer onPanEnd={(event) => this.handlePan(event)} vertical={true}>
         <div className='board' tabIndex='1'>
           {tiles}
-          <BallComponent key='ball' ball={board.ball} fall={()=>board.hasLost()}/>
+          <BallComponent key='ball' ball={board.ball} fall={()=>board.noMoves()}/>
           <OverlayComponent board={board} onRestart={() => this.restartGame()} onLevelUp={() => this.levelUp()} />
           <ReactInterval timeout={500} enabled={true} callback={() => this.tick()} />
         </div>

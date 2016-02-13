@@ -11,7 +11,7 @@ export default class Ball {
   }
 
   moveTo (x, y) {
-    if(!this.moving && x >= 0 && y >= 0 && x < 8 && y < 6) {
+    if(x >= 0 && y >= 0 && x < 8 && y < 6) {
       this.newX = x;
       this.newY = y;
       this.steps = 1;

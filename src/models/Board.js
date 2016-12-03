@@ -3,13 +3,13 @@ import Ball from './Ball';
 import Levels from '../assets/levels.json';
 
 export default class Board {
-  constructor() {
-    this.level = 0;
+  constructor () {
+    this.level = 1;
     this.levels = Levels;
     this.loadLevelData();
   }
 
-  loadLevelData() {
+  loadLevelData () {
     this.tiles = [];
     this.cells = [];
     this.won = false;
@@ -25,23 +25,23 @@ export default class Board {
     }
   }
 
-  noMoves(){
+  noMoves () {
     return this.lost || this.won;
   }
 
-  hasLost(){
+  hasLost () {
     return this.lost;
   }
 
-  hasWon(){
+  hasWon () {
     return this.won;
   }
 
-  getTile(x,y){
+  getTile (x,y) {
     return this.cells[y][x];
   }
 
-  addTile(x, y, v) {
+  addTile (x, y, v) {
     const res = new Tile(x, y, v);
     Tile.apply(res, arguments);
     this.tiles.push(res);
@@ -51,12 +51,12 @@ export default class Board {
     return res;
   }
 
-  restart (){
+  restart () {
     this.loadLevelData();
     return this;
   }
 
-  nextLevel() {
+  nextLevel () {
     this.level++;
     this.loadLevelData();
     return this;

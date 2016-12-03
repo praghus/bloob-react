@@ -1,14 +1,12 @@
-'use strict';
-
 import React from 'react';
 import classNames from 'classnames';
 
 export default class TileComponent extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
   }
 
-  render() {
+  render () {
     const { tile } = this.props;
     let tileClass = 'tile tile' + tile.value + ' position_' + tile.y + '_' + tile.x;
     return (

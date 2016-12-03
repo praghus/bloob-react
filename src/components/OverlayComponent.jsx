@@ -1,10 +1,11 @@
 import React from 'react';
 
 export default class OverlayComponent extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
   }
-  render() {
+
+  render () {
     const { onRestart, onLevelUp, board } = this.props;
     let contents = '';
     let button = '';

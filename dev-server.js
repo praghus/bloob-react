@@ -3,8 +3,8 @@ var express = require('express');
 var webpack = require('webpack');
 var favicon = require('serve-favicon');
 var config = require('./webpack.config.dev');
-var app = express();
 var compiler = webpack(config);
+var app = express();
 
 app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: true,

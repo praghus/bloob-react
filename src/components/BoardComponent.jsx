@@ -1,5 +1,3 @@
-'use strict';
-
 import React from 'react';
 import ReactInterval from 'react-interval';
 import Hammer from 'react-hammerjs';
@@ -9,23 +7,23 @@ import BallComponent from './BallComponent';
 import OverlayComponent from './OverlayComponent';
 
 export default class BoardComponent extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = { board: new Board };
   }
 
-  restartGame() {
+  restartGame () {
     const { board } = this.state;
     console.log('restart');
     this.setState({ board: board.restart() });
   }
 
-  levelUp(){
+  levelUp (){
     const { board } = this.state;
     this.setState({ board: board.nextLevel() });
   }
 
-  handleKeyDown(event) {
+  handleKeyDown (event) {
     event.preventDefault();
     const dirs  = { 0: 'left', 1: 'up', 2: 'right', 3: 'down'};
     if (event.keyCode >= 37 && event.keyCode <= 40) {
@@ -34,20 +32,19 @@ export default class BoardComponent extends React.Component {
     }
   }
 
-  handlePan(event){
+  handlePan (event) {
     event.preventDefault();
-    const {offsetDirection} = event;
+    const { offsetDirection } = event;
     const dirs  = { 4: 'right', 8: 'up', 2: 'left', 16: 'down'};
     this.move(dirs[offsetDirection]);
   }
 
-  move(direction){
+  move (direction) {
     const { board } = this.state;
     const { ball } = this.state.board;
     if(board.noMoves() || ball.isMoving()){
       return;
     }
-    console.log(direction);
     switch (direction) {
       case 'panleft'  : case 'left' : ball.moveTo(ball.x - ball.steps, ball.y); break;
       case 'panup'    : case 'up'   : ball.moveTo(ball.x, ball.y - ball.steps); break;
@@ -55,11 +52,11 @@ export default class BoardComponent extends React.Component {
       case 'pandown'  : case 'down' : ball.moveTo(ball.x, ball.y + ball.steps); break;
     }
     if(ball.z === 1) {
-      this.setState({board: board});
+      this.setState({board});
     }
   }
 
-  tick(){
+  tick () {
     const { board } = this.state;
     const { ball } = board;
     if(board.noMoves()){
@@ -91,18 +88,18 @@ export default class BoardComponent extends React.Component {
       }
     }
     ball.z = ball.z === 1 ? -1 : 1;
-    this.setState({board: board});
+    this.setState({board});
   }
 
-  componentDidMount() {
+  componentDidMount () {
     window.addEventListener('keydown', this.handleKeyDown.bind(this), false);
   }
 
-  componentWillUnmount() {
+  componentWillUnmount () {
     window.removeEventListener('keydown', this.handleKeyDown.bind(this), false);
   }
 
-  render() {
+  render () {
     const { board } = this.state;
     const tiles = board.tiles.filter(
       (tile) => tile.value != 0

@@ -19,7 +19,7 @@ export default class Ball {
     }
   }
 
-  moved(){
+  moved() {
     if(this.isMoving()) {
       this.x = this.newX;
       this.y = this.newY;
